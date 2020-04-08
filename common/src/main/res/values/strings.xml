@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Common</string>
+    <string name="label_gallery_select_max_size">200</string>
+</resources>

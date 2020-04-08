@@ -1,0 +1,3 @@
+rootProject.name='Talk'
+include ':app'
+include ':common'
