@@ -32,6 +32,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.OnClick;
 
+
 public class MainActivity extends BaseActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
         NavHelper.OnTabChangedListener<Integer> {

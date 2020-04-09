@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 29
@@ -32,9 +33,10 @@ dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':common')
 
-    api 'com.android.support.constraint:constraint-layout:+'
+    api 'androidx.constraintlayout:constraintlayout:+'
     api "net.qiujuer.genius:ui:$rootProject.ext.geniusVersion"
     api "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     api "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     api "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+    annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
 }
