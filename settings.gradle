@@ -1,3 +1,5 @@
 rootProject.name='Talk'
 include ':app'
 include ':common'
+include ':factory'
+include ':lang'

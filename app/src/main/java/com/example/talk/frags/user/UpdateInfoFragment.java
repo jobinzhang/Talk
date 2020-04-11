@@ -1,4 +1,4 @@
-package com.example.talk.frags.account;
+package com.example.talk.frags.user;
 
 
 import android.content.Intent;

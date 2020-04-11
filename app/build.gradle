@@ -39,4 +39,5 @@ dependencies {
     api "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     api "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
+    api project(path: ':factory')
 }
