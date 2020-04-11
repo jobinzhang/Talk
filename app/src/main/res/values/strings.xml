@@ -3,11 +3,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--    &lt;!&ndash; TODO: Remove or change this placeholder text &ndash;&gt;
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_launch">LaunchActivity</string>
     <string name="title_select_gallery">title select gallery</string>
     <string name="label_permission_ok">label_permission_ok</string>
     <string name="title_assist_permissions">title_assist_permissions</string>
     <string name="title_group">title_group</string>
     <string name="title_home">title_home</string>
-    <string name="title_contact">title_contact</string>
+    <string name="title_contact">title_contact</string>-->
 </resources>

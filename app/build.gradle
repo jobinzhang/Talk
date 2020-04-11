@@ -38,6 +38,8 @@ dependencies {
     api "net.qiujuer.genius:res:$rootProject.ext.geniusVersion"
     api "com.yalantis:ucrop:$rootProject.ext.ucropVersion"
     api "pub.devrel:easypermissions:$rootProject.ext.easyPMVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.ext.butterKnifeVersion"
     api project(path: ':factory')
 }

@@ -12,12 +12,16 @@
         <activity android:name=".LaunchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.common.app.BaseActivity"/>
-        <activity android:name=".activities.MainActivity"/>
-        <activity android:name=".activities.AccountActivity"/>
+        <activity android:name="com.example.common.app.BaseActivity" />
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.AccountActivity" />
+        <activity android:name=".activities.SearchActivity"
+            android:label="@string/title_search"
+            android:theme="@style/AppTheme.TransStatusBar" />
     </application>
 
 </manifest>

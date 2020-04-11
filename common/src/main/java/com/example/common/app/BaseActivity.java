@@ -30,7 +30,7 @@ public abstract  class BaseActivity extends AppCompatActivity {
      * @param bundle
      * @return
      */
-    private boolean initArgs(Bundle bundle) {
+    protected boolean initArgs(Bundle bundle) {
         return true;
     }
 
