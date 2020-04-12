@@ -30,7 +30,7 @@ public class Account {
     // 登录状态的Token，用来接口请求
     private static String token;
     // 登录的用户ID
-    private static String userId;
+    private static int userId;
     // 登录的账户
     private static String account;
 
@@ -47,7 +47,7 @@ public class Account {
                 .putString(KEY_PUSH_ID, pushId)
                 .putBoolean(KEY_IS_BIND, isBind)
                 .putString(KEY_TOKEN, token)
-                .putString(KEY_USER_ID, userId)
+                .putInt(KEY_USER_ID, userId)
                 .putString(KEY_ACCOUNT, account)
                 .apply();
     }
@@ -61,7 +61,7 @@ public class Account {
         pushId = sp.getString(KEY_PUSH_ID, "");
         isBind = sp.getBoolean(KEY_IS_BIND, false);
         token = sp.getString(KEY_TOKEN, "");
-        userId = sp.getString(KEY_USER_ID, "");
+        userId = sp.getInt(KEY_USER_ID, 0);
         account = sp.getString(KEY_ACCOUNT, "");
     }
 
@@ -85,6 +85,10 @@ public class Account {
         return pushId;
     }
 
+    public static int getUserId() {
+        return userId;
+    }
+
     /**
      * 返回当前账户是否登录
      *
@@ -92,7 +96,7 @@ public class Account {
      */
     public static boolean isLogin() {
         // 用户Id 和 Token 不为空
-        return !TextUtils.isEmpty(userId)
+        return userId != 0
                 && !TextUtils.isEmpty(token);
     }
 
@@ -150,7 +154,7 @@ public class Account {
      */
     public static User getUser() {
         // 如果为null返回一个new的User，其次从数据库查询
-        return TextUtils.isEmpty(userId) ? new User() : SQLite.select()
+        return userId == 0 ? new User() : SQLite.select()
                 .from(User.class)
                 .where(User_Table.id.eq(userId))
                 .querySingle();

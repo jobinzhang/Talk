@@ -2,6 +2,7 @@ package com.example.factory;
 
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.StringRes;
 
@@ -97,6 +98,7 @@ public class Factory {
      * @param callback DataSource.FailedCallback 用于返回一个错误的资源Id
      */
     public static void decodeRspCode(RspModel model, DataSource.FailedCallback callback) {
+        Log.e("decodeRspCode", model.toString());
         if (model == null)
             return;
 

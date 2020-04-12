@@ -2,14 +2,12 @@ package com.example.factory.model.card;
 
 import com.example.factory.model.db.User;
 
-import java.util.Date;
-
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
  */
 public class UserCard {
-    private String id;
+    private int id;
     private String name;
     private String phone;
     private String portrait;
@@ -26,14 +24,22 @@ public class UserCard {
     private boolean isFollow;
 
     // 用户信息最后的更新时间
-    private Date modifyAt;
+    private long modifyAt;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public long getModifyAt() {
+        return modifyAt;
+    }
+
+    public void setModifyAt(long modifyAt) {
+        this.modifyAt = modifyAt;
     }
 
     public String getName() {
@@ -98,14 +104,6 @@ public class UserCard {
 
     public void setFollow(boolean follow) {
         isFollow = follow;
-    }
-
-    public Date getModifyAt() {
-        return modifyAt;
-    }
-
-    public void setModifyAt(Date modifyAt) {
-        this.modifyAt = modifyAt;
     }
 
     // 缓存一个对应的User, 不能被GSON框架解析使用ø

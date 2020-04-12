@@ -54,7 +54,7 @@ public class SearchActivity extends ToolbarActivity {
         } else {
             SearchGroupFragment searchGroupFragment = new SearchGroupFragment();
             fragment = searchGroupFragment;
-            searchGroupFragment = searchGroupFragment;
+            searchFragment = searchGroupFragment;
         }
         getSupportFragmentManager().beginTransaction().add(R.id.lay_container, fragment).commit();
     }
@@ -71,7 +71,6 @@ public class SearchActivity extends ToolbarActivity {
             // 拿到一个搜索管理器
             SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-
             // 添加搜索监听
             searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
                 @Override
@@ -85,10 +84,10 @@ public class SearchActivity extends ToolbarActivity {
                 public boolean onQueryTextChange(String s) {
                     // 当文字改变的时候，咱们不会及时搜索，只在为null的情况下进行搜索
                     if (TextUtils.isEmpty(s)) {
-                        search("");
-                        return true;
+                        //search("");
+                        return false;
                     }
-                    return false;
+                    return true;
                 }
             });
         }
@@ -100,7 +99,7 @@ public class SearchActivity extends ToolbarActivity {
      * 搜索的发起点
      */
     private void search(String query) {
-        if (searchFragment != null) {
+        if (searchFragment != null && query != null && !"".endsWith(query)) {
             searchFragment.search(query);
         }
     }

@@ -1,7 +1,5 @@
 package com.example.factory.model.api;
 
-import java.util.Date;
-
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
@@ -34,7 +32,7 @@ public class RspModel<T> {
 
     private int code;
     private String message;
-    private Date time;
+    private long time;
     private T result;
 
     public boolean success() {
@@ -49,11 +47,11 @@ public class RspModel<T> {
         this.code = code;
     }
 
-    public Date getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

@@ -5,8 +5,6 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
-import java.util.Date;
-
 /**
  * @author qiujuer Email:qiujuer@live.cn
  * @version 1.0.0
@@ -18,7 +16,7 @@ public class User extends BaseModel {
 
     // 主键
     @PrimaryKey
-    private String id;
+    private int id;
     @Column
     private String name;
     @Column
@@ -48,13 +46,13 @@ public class User extends BaseModel {
 
     // 时间字段
     @Column
-    private Date modifyAt;
+    private long modifyAt;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -130,11 +128,11 @@ public class User extends BaseModel {
         isFollow = follow;
     }
 
-    public Date getModifyAt() {
+    public long getModifyAt() {
         return modifyAt;
     }
 
-    public void setModifyAt(Date modifyAt) {
+    public void setModifyAt(long modifyAt) {
         this.modifyAt = modifyAt;
     }
 
