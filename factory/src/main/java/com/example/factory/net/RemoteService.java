@@ -14,6 +14,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -58,4 +59,12 @@ public interface RemoteService {
     @Headers("self_uid:1")
     @GET("user/search/{name}")
     Call<RspModel<List<UserCard>>> userSearch(@Path("name") String name);
+
+    @Headers("self_uid:1")
+    @PUT("user/follow/{uid}")
+    Call<RspModel<UserCard>> userFollow(@Path("uid") int uid);
+
+    // 获取用户联系人接口
+    @GET("user/contact/{uid}")
+    Call<RspModel<List<UserCard>>> userContact(@Path("uid") int uid);
 }

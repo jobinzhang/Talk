@@ -21,7 +21,7 @@ public class UserCard {
     private int following;
 
     // 我与当前User的关系状态，是否已经关注了这个人
-    private boolean isFollow;
+    private boolean follow;
 
     // 用户信息最后的更新时间
     private long modifyAt;
@@ -99,11 +99,11 @@ public class UserCard {
     }
 
     public boolean isFollow() {
-        return isFollow;
+        return follow;
     }
 
     public void setFollow(boolean follow) {
-        isFollow = follow;
+        this.follow = follow;
     }
 
     // 缓存一个对应的User, 不能被GSON框架解析使用ø
@@ -118,7 +118,7 @@ public class UserCard {
             user.setPhone(phone);
             user.setDesc(desc);
             user.setSex(sex);
-            user.setFollow(isFollow);
+            user.setFollow(follow);
             user.setFollows(follows);
             user.setFollowing(following);
             user.setModifyAt(modifyAt);

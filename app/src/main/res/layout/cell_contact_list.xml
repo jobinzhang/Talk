@@ -52,7 +52,7 @@
         tools:text="Mary Harmon" />
 
     <ImageView
-        android:id="@+id/im_follow"
+        android:id="@+id/im_message"
         android:layout_width="@dimen/len_32"
         android:layout_height="@dimen/len_32"
         android:layout_gravity="end|center_vertical"

@@ -80,4 +80,57 @@ public class UserHelper {
         return call;
     }
 
+    // 关注用户
+    public static void follow(int uid, final DataSource.Callback<UserCard> callback) {
+        RemoteService service = Network.remote();
+        Call<RspModel<UserCard>> call = service.userFollow(uid);
+        call.enqueue(new Callback<RspModel<UserCard>>() {
+            @Override
+            public void onResponse(Call<RspModel<UserCard>> call, Response<RspModel<UserCard>> response) {
+                RspModel<UserCard> rspModel = response.body();
+                if (rspModel.success()) {
+                    UserCard userCard = rspModel.getResult();
+                    // 保存到本地数据库
+                    //User user = userCard.build();
+                    //user.insert();
+                    // TODO 通知联系人列表刷新
+
+                    // 返回数据
+                    callback.onDataLoaded(userCard);
+                } else {
+                    // 错误情况下进行错误分配
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<UserCard>> call, Throwable t) {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        });
+    }
+
+    // 获得用户联系人
+    public static void userContact(int uid, final DataSource.Callback<List<UserCard>> callback) {
+        RemoteService service = Network.remote();
+        Call<RspModel<List<UserCard>>> call = service.userContact(uid);
+        call.enqueue(new Callback<RspModel<List<UserCard>>>() {
+            @Override
+            public void onResponse(Call<RspModel<List<UserCard>>> call, Response<RspModel<List<UserCard>>> response) {
+                RspModel<List<UserCard>> rspModel = response.body();
+                if (rspModel.success()) {
+                    // 返回数据
+                    callback.onDataLoaded(rspModel.getResult());
+                } else {
+                    // 错误情况下进行错误分配
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<List<UserCard>>> call, Throwable t) {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        });
+    }
 }
