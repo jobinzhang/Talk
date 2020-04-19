@@ -5,9 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.common.widget.convention.PlaceHolderView;
+
 import butterknife.ButterKnife;
 
 public abstract  class BaseActivity extends AppCompatActivity {
+
+    protected PlaceHolderView mPlaceHolderView;
 
 
     @Override
@@ -17,6 +21,7 @@ public abstract  class BaseActivity extends AppCompatActivity {
         initWindows();
         if (initArgs(getIntent().getExtras())) {
             setContentView(getContentLayoutId());
+            initBefore();
             initWidget();
             initData();
         } else {
@@ -25,6 +30,13 @@ public abstract  class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract int getContentLayoutId();
+
+    /**
+     * 初始化控件调用之前
+     */
+    protected void initBefore() {
+
+    }
 
     /**
      * 获取参数
@@ -68,5 +80,14 @@ public abstract  class BaseActivity extends AppCompatActivity {
         // 点击手机返回键时候
         super.onBackPressed();
         finish();
+    }
+
+    /**
+     * 设置占位布局
+     *
+     * @param placeHolderView 继承了占位布局规范的View
+     */
+    public void setPlaceHolderView(PlaceHolderView placeHolderView) {
+        this.mPlaceHolderView = placeHolderView;
     }
 }

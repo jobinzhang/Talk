@@ -36,6 +36,7 @@
         <activity android:name=".activities.SearchActivity"
             android:label="@string/title_search"
             android:theme="@style/AppTheme.TransStatusBar" />
+        <activity android:name=".activities.PersonalActivity"/>
     </application>
 
 </manifest>

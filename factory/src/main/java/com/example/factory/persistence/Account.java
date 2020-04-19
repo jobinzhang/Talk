@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 import com.example.factory.Factory;
-import com.example.factory.model.api.account.AccountRspModel;
+import com.example.factory.model.card.UserCard;
 import com.example.factory.model.db.User;
 import com.example.factory.model.db.User_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
@@ -96,8 +96,7 @@ public class Account {
      */
     public static boolean isLogin() {
         // 用户Id 和 Token 不为空
-        return userId != 0
-                && !TextUtils.isEmpty(token);
+        return userId != 0;
     }
 
     /**
@@ -139,11 +138,11 @@ public class Account {
      *
      * @param model AccountRspModel
      */
-    public static void login(AccountRspModel model) {
+    public static void login(UserCard model) {
         // 存储当前登录的账户, token, 用户Id，方便从数据库中查询我的信息
-        Account.token = model.getToken();
-        Account.account = model.getAccount();
-        Account.userId = model.getUser().getId();
+        Account.token = "";
+        Account.account = model.getName();
+        Account.userId = model.getId();
         save(Factory.app());
     }
 

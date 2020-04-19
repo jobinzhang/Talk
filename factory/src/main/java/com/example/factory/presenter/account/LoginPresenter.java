@@ -6,7 +6,7 @@ import com.example.factory.R;
 import com.example.factory.data.DataSource;
 import com.example.factory.data.helper.AccountHelper;
 import com.example.factory.model.api.account.LoginModel;
-import com.example.factory.model.db.User;
+import com.example.factory.model.card.UserCard;
 import com.example.factory.persistence.Account;
 import com.example.factory.presenter.BasePresenter;
 
@@ -20,7 +20,7 @@ import net.qiujuer.genius.kit.handler.runable.Action;
  * @version 1.0.0
  */
 public class LoginPresenter extends BasePresenter<LoginContract.View>
-        implements LoginContract.Presenter, DataSource.Callback<User> {
+        implements LoginContract.Presenter, DataSource.Callback<UserCard> {
     public LoginPresenter(LoginContract.View view) {
         super(view);
     }
@@ -41,7 +41,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View>
     }
 
     @Override
-    public void onDataLoaded(User user) {
+    public void onDataLoaded(UserCard user) {
         final LoginContract.View view = getView();
         if (view == null)
             return;

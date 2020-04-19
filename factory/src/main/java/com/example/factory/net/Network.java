@@ -51,10 +51,10 @@ public class Network {
                             // 注入一个token
                             builder.addHeader("token", Account.getToken());
                         }
-/*                        if (Account.getUserId() != 0) {
+                        if (Account.getUserId() != 0) {
                             // 将当前用户id设置进head
                             builder.addHeader("self_uid", Account.getUserId()+"");
-                        }*/
+                        }
                         builder.addHeader("Content-Type", "application/json");
                         Request newRequest = builder.build();
                         // 返回

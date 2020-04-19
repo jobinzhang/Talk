@@ -1,8 +1,6 @@
 package com.example.factory.net;
 
 import com.example.factory.model.api.RspModel;
-import com.example.factory.model.api.account.AccountRspModel;
-import com.example.factory.model.api.account.LoginModel;
 import com.example.factory.model.api.account.RegisterModel;
 import com.example.factory.model.api.user.UserUpdateModel;
 import com.example.factory.model.card.UserCard;
@@ -12,7 +10,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -32,16 +29,18 @@ public interface RemoteService {
      * @return 返回的是RspModel<AccountRspModel>
      */
     @POST("account/register")
-    Call<RspModel<AccountRspModel>> accountRegister(@Body RegisterModel model);
+    Call<RspModel<UserCard>> accountRegister(@Body RegisterModel model);
 
     /**
      * 登录接口
      *
-     * @param model LoginModel
      * @return RspModel<AccountRspModel>
      */
-    @POST("account/login")
-    Call<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
+    //@POST("account/login")
+    //Call<RspModel<AccountRspModel>> accountLogin(@Body LoginModel model);
+
+    @GET("user/login/{username}/{password}")
+    Call<RspModel<UserCard>> accountLogin(@Path("username") String username, @Path("password") String password);
 
     /**
      * 绑定设备Id
@@ -50,21 +49,22 @@ public interface RemoteService {
      * @return RspModel<AccountRspModel>
      */
     @POST("account/bind/{pushId}")
-    Call<RspModel<AccountRspModel>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
+    Call<RspModel<UserCard>> accountBind(@Path(encoded = true, value = "pushId") String pushId);
 
     // 用户更新的接口
     @POST("user")
     Call<RspModel<UserCard>> userUpdate(@Body UserUpdateModel model);
 
-    @Headers("self_uid:1")
     @GET("user/search/{name}")
     Call<RspModel<List<UserCard>>> userSearch(@Path("name") String name);
 
-    @Headers("self_uid:1")
     @PUT("user/follow/{uid}")
     Call<RspModel<UserCard>> userFollow(@Path("uid") int uid);
 
-    // 获取用户联系人接口
+    // 获取用户关注的联系人接口
     @GET("user/contact/{uid}")
     Call<RspModel<List<UserCard>>> userContact(@Path("uid") int uid);
+
+    @GET("user/{uid}")
+    Call<RspModel<UserCard>> getUser(@Path("uid") int uid);
 }

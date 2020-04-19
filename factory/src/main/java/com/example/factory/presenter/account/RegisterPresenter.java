@@ -7,7 +7,7 @@ import com.example.factory.R;
 import com.example.factory.data.DataSource;
 import com.example.factory.data.helper.AccountHelper;
 import com.example.factory.model.api.account.RegisterModel;
-import com.example.factory.model.db.User;
+import com.example.factory.model.card.UserCard;
 import com.example.factory.persistence.Account;
 import com.example.factory.presenter.BasePresenter;
 
@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
  * @version 1.0.0
  */
 public class RegisterPresenter extends BasePresenter<RegisterContract.View>
-        implements RegisterContract.Presenter, DataSource.Callback<User> {
+        implements RegisterContract.Presenter, DataSource.Callback<UserCard> {
     public RegisterPresenter(RegisterContract.View view) {
         super(view);
     }
@@ -67,7 +67,7 @@ public class RegisterPresenter extends BasePresenter<RegisterContract.View>
     }
 
     @Override
-    public void onDataLoaded(User user) {
+    public void onDataLoaded(UserCard user) {
         // 当网络请求成功，注册好了，回送一个用户信息回来
         // 告知界面，注册成功
         final RegisterContract.View view = getView();

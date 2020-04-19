@@ -6,7 +6,6 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.drawable.ColorDrawable;
-import android.text.TextUtils;
 import android.util.Property;
 import android.view.View;
 
@@ -45,15 +44,16 @@ public class LaunchActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
+        waitPushReceiverId();
 
         // 动画进入到50%等待PushId获取到
-        startAnim(0.5f, new Runnable() {
+       /* startAnim(0.5f, new Runnable() {
             @Override
             public void run() {
                 // 检查等待状态
                 waitPushReceiverId();
             }
-        });
+        });*/
     }
 
     /**
@@ -70,11 +70,13 @@ public class LaunchActivity extends BaseActivity {
         } else {
             // 没有登录
             // 如果拿到了PushId, 没有登录是不能绑定PushId的
-            if (!TextUtils.isEmpty(Account.getPushId())) {
+            /*if (!TextUtils.isEmpty(Account.getPushId())) {
                 // 跳转
                 skip();
                 return;
-            }
+            }*/
+            skip();
+            return;
         }
 
         // 循环等待
@@ -91,12 +93,13 @@ public class LaunchActivity extends BaseActivity {
      * 在跳转之前需要把剩下的50%进行完成
      */
     private void skip() {
-        startAnim(1f, new Runnable() {
+        reallySkip();
+/*        startAnim(1f, new Runnable() {
             @Override
             public void run() {
                 reallySkip();
             }
-        });
+        });*/
     }
 
     /**

@@ -110,7 +110,7 @@ public class UserHelper {
         });
     }
 
-    // 获得用户联系人
+    // 获得用户关注的联系人
     public static void userContact(int uid, final DataSource.Callback<List<UserCard>> callback) {
         RemoteService service = Network.remote();
         Call<RspModel<List<UserCard>>> call = service.userContact(uid);
@@ -129,6 +129,30 @@ public class UserHelper {
 
             @Override
             public void onFailure(Call<RspModel<List<UserCard>>> call, Throwable t) {
+                callback.onDataNotAvailable(R.string.data_network_error);
+            }
+        });
+    }
+
+    // 获取用户信息
+    public static void getUser(int uid, final DataSource.Callback<UserCard> callback) {
+        RemoteService service = Network.remote();
+        Call<RspModel<UserCard>> call = service.getUser(uid);
+        call.enqueue(new Callback<RspModel<UserCard>>() {
+            @Override
+            public void onResponse(Call<RspModel<UserCard>> call, Response<RspModel<UserCard>> response) {
+                RspModel<UserCard> rspModel = response.body();
+                if (rspModel.success()) {
+                    // 返回数据
+                    callback.onDataLoaded(rspModel.getResult());
+                } else {
+                    // 错误情况下进行错误分配
+                    Factory.decodeRspCode(rspModel, callback);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RspModel<UserCard>> call, Throwable t) {
                 callback.onDataNotAvailable(R.string.data_network_error);
             }
         });

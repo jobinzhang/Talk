@@ -17,6 +17,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.ViewTarget;
 import com.example.common.app.BaseActivity;
 import com.example.common.widget.PortraitView;
+import com.example.factory.persistence.Account;
 import com.example.talk.R;
 import com.example.talk.frags.main.ActiveFragment;
 import com.example.talk.frags.main.ContactFragment;
@@ -105,6 +106,12 @@ public class MainActivity extends BaseActivity
         Menu menu = mNavigation.getMenu();
         // 触发首次选中Home
         menu.performIdentifierAction(R.id.action_home, 0);
+    }
+
+    // 点击头像，进入用户详情信息
+    @OnClick(R.id.im_portrait)
+    void onImPortraitClick() {
+        PersonalActivity.show(this, Account.getUserId());
     }
 
     @OnClick(R.id.im_search)
